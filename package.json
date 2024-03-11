@@ -1,0 +1,27 @@
+{
+	"name": "vite-plugin-dns",
+	"version": "0.0.5",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"build": "tsup",
+		"lint": "biome check --apply --no-errors-on-unmatched",
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.6.0",
+		"husky": "^9.0.11",
+		"nano-staged": "^0.8.0",
+		"tsup": "^8.0.2",
+		"typescript": "^5.4.2",
+		"vite": "^5.1.5"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"node-html-parser": "^6.1.12",
+		"prettier": "^3.2.5"
+	}
+}
