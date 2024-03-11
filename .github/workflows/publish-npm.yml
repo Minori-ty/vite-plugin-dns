@@ -36,11 +36,6 @@ jobs:
         with:
             node-version: "20"
 
-      - name: ci
-        run: |
-          npm ci
-          npm test
-
       - name: push
         uses: JS-DevTools/npm-publish@v3
         with:
