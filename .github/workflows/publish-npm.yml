@@ -30,6 +30,9 @@ jobs:
           echo "version is ${{ steps.check.outputs.version }}"
           echo "------------------------------"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Gen npmrc
         run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./.npmrc
 
