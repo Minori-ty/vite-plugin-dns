@@ -1,8 +1,11 @@
 {
 	"name": "vite-plugin-dns",
-	"version": "0.0.9",
+	"version": "0.0.1",
 	"description": "A vite plugin to auto add dns-prefetch link tag and preconnect link tag",
 	"author": "天平 <1229248506@qq.com>",
+	"publishConfig": {
+		"access": "public"
+	},
 	"license": "MIT",
 	"homepage": "https://github.com/Minori-ty/vite-plugin-dns",
 	"type": "module",
@@ -16,6 +19,7 @@
 			"require": "./dist/index.cjs"
 		}
 	},
+	"files": ["dist"],
 	"scripts": {
 		"build": "tsup",
 		"lint": "biome check --apply --no-errors-on-unmatched",
