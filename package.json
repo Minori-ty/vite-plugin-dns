@@ -1,6 +1,6 @@
 {
 	"name": "vite-plugin-dns",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "A vite plugin to auto add dns-prefetch link tag and preconnect link tag",
 	"author": "天平 <1229248506@qq.com>",
 	"license": "MIT",
