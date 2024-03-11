@@ -2,7 +2,7 @@
 
 set -e
 
-pnpm i
+pnpm install --no-frozen-lockfile
 pnpm build
 
 npm publish --provenance
