@@ -40,11 +40,6 @@ jobs:
 
       - name: Build & publish
         if: steps.check.outputs.changed == 'true'
-        run: sh ./script/publish.sh
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          TAG_VERSION: ${{ steps.check.outputs.version }}
-          REGISTRY: https://registry.npmjs.com/
-          FORCE_COLOR: 2
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_OPTIONS: --max-old-space-size=4096
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
