@@ -1,13 +1,30 @@
 {
 	"name": "vite-plugin-dns",
 	"version": "0.0.5",
-	"description": "",
-	"main": "index.js",
+	"description": "A vite plugin to auto add dns-prefetch link tag and preconnect link tag",
+	"author": "天平 <1229248506@qq.com>",
+	"license": "MIT",
+	"homepage": "https://github.com/Minori-ty/vite-plugin-dns",
 	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts",
+			"require": "./dist/index.cjs"
+		}
+	},
 	"scripts": {
 		"build": "tsup",
 		"lint": "biome check --apply --no-errors-on-unmatched",
 		"prepare": "husky"
+	},
+	"keywords": ["vite", "plugin", "dns-prefetch", "preconnect"],
+	"dependencies": {
+		"node-html-parser": "^6.1.12",
+		"prettier": "^3.2.5"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.6.0",
@@ -17,11 +34,7 @@
 		"typescript": "^5.4.2",
 		"vite": "^5.1.5"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"node-html-parser": "^6.1.12",
-		"prettier": "^3.2.5"
+	"peerDependencies": {
+		"vite": "^5.1.5"
 	}
 }

@@ -1,4 +1,4 @@
-name: release
+name: publish to npm
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   repository-projects: write
 
 jobs:
-  changelog:
+  publish:
     if: ${{ github.repository_owner == 'minori-ty' }}
     runs-on: ubuntu-latest
     steps:
@@ -30,24 +30,16 @@ jobs:
           echo "version is ${{ steps.check.outputs.version }}"
           echo "------------------------------"
 
-      # - name: build
-      #   if: steps.check.outputs.changed == 'true'
-      #   uses: actions/setup-node@v4.0.2
+      - name: Gen npmrc
+        run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ./.npmrc
 
-      - name: Install dependencies
+      - name: Build & publish
         if: steps.check.outputs.changed == 'true'
-        run: npm install
-
-      - name: Build
-        if: steps.check.outputs.changed == 'true'
-        run: npm run build
-
-      - name: Create Release
-        if: steps.check.outputs.changed == 'true'
-        uses: softprops/action-gh-release@v2
+        run: sh ./script/publish.sh
         env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          TAG_VERSION: ${{ steps.check.outputs.version }}
+          REGISTRY: https://registry.npmjs.com/
+          FORCE_COLOR: 2
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ steps.check.outputs.version }}
-        with:
-          name: v${{ steps.check.outputs.version }}
-          tag_name: v${{ steps.check.outputs.version }}
+          NODE_OPTIONS: --max-old-space-size=4096
