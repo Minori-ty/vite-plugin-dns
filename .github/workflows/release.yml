@@ -54,4 +54,4 @@ jobs:
               with:
                   name: v${{ steps.check.outputs.version }}
                   tag_name: v${{ steps.check.outputs.version }}
-                  body_path: ../update.md
+                  body_path: ${{ github.workspace }}/.github/update.md
