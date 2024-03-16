@@ -30,23 +30,17 @@ jobs:
                   echo "version is ${{ steps.check.outputs.version }}"
                   echo "------------------------------"
 
-            # - name: build
-            #   if: steps.check.outputs.changed == 'true'
-            #   uses: actions/setup-node@v4.0.2
-
             - name: Install dependencies
-              if: steps.check.outputs.changed == 'true'
               run: npm install
 
             - name: Build
-              if: steps.check.outputs.changed == 'true'
               run: npm run build
 
             - name: workspace
               run: echo ${{ github.workspace }}
 
             - name: Create Release
-              # if: steps.check.outputs.changed == 'true'
+              if: steps.check.outputs.changed == 'true'
               uses: softprops/action-gh-release@v2
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
