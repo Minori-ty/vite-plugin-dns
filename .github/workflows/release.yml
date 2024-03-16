@@ -41,6 +41,7 @@ jobs:
             - name: Build
               if: steps.check.outputs.changed == 'true'
               run: npm run build
+              run: ${{ github.workspace }}
 
             - name: Create Release
               # if: steps.check.outputs.changed == 'true'
